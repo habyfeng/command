@@ -1,12 +1,51 @@
 ## mysqldump
 ```sql
-mysqldump  -n -t sakiladb -uroot -p"123456" -P 3306 --where="OccurredTime>'2016-12-01 00:00:00'">/root/spider/epgdb.sql
+mysqldump  -n -t sakiladb -uroot -p"123456" -P 3306 --default-character-set=utf8 --where="OccurredTime>'2016-12-01 00:00:00'">/root/spider/epgdb.sql
 ```
+
+- -t：只导数据
 
 ## 从select中创建表：
 ```sql
 create table film20240809 (select * from sakiladb.film)
 ```
+
+## 查询条件使用正则
+```sql
+select * from kbv2_community where boundary REGEXP '.*(\\|)+.*' limit 10
+```
+
+## 对分组结果过滤
+
+我们知道WHERE 子句用于过滤结果，但是对于分组的过滤WHERE子句不行。
+
+因为WHERE子句，是针对行的过滤。要对分组结果进行过滤，必须使用HAVING子句，HAVING子句能针对分组的结果进行过滤。
+
+举例：在订单表中，检索出具有两个以上订单的客户id以及订单数量。
+```sql
+SELECT cust_id,COUNT(*) AS orders FROM orders GROUP BY cust_id HAVING orders>=2;
+```
+
+显示每个地区的总人口数和总面积，仅显示那些面积超过1000000的地区。
+```sql
+SELECT region, SUM(population), SUM(area)
+FROM bbc
+GROUP BY region
+HAVING SUM(area)>1000000
+```
+
+## exists
+
+EXISTS用于检查子查询是否至少会返回一行数据，该子查询实际上并不返回任何数据，而是返回值True或False。
+
+```sql
+SELECT c.CustomerId, CompanyName  
+	FROM Customers c  
+	WHERE EXISTS(  
+	    SELECT OrderID FROM Orders o  
+	    WHERE o.CustomerID = cu.CustomerID)  
+```
+
 
 ##  mysql IPV6:
 ```
@@ -94,6 +133,19 @@ SET GLOBAL general_log = 'OFF';
 general_log = 1
 general_log_file = 文件路径
 ```
+
+## 查看mysql目录
+查看mysql安装目录
+```sql
+select @@basedir;
+```
+
+查看mysql数据文件存放目录
+```sql
+select @@datadir;
+```
+
+
 
 
 
