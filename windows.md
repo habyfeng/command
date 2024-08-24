@@ -65,3 +65,22 @@ PowerShell下执行：
 Enable-TlsCipherSuite -Name TLS_DHE_DSS_WITH_AES_256_CBC_SHA
 ```
 
+## 新电脑开机不激活
+
+开机执行到【让我们为你连接到网络】时，按住
+快捷键：
+```
+【Shift+F10】或【Fn+Shift+F10】
+```
+在跳出的CMD命令窗口输入以下命令：
+```cmd
+oobe\bypassnro
+```
+输入代码后回车，系统安装会自动重启，重新回到【让我们为你连接到网络】界面。在这个界面会发现比之前多了一个【我没有Internet连接】，点击这个选项。
+
+如果没有出现【我没有Internet连接】，则继续按快捷键【Shift+F10】或【Fn+Shift+F10】，在跳出的CMD命令窗口输入以下代码：
+```
+oobe\bypassnro.cmd
+```
+
+在跳出的界面一次点击【我没有Internet连接】、【继续执行受限设置】，后面的安装就按部就班进行安装即可。
