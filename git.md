@@ -68,3 +68,14 @@ cat ~/.ssh/id_ed25519.pub
 ```
 cat ~/.ssh/id_rsa.pub
 ```
+
+配置用户名密码：
+```
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+测试密钥认证：
+```
+ssh -T git@github.com
+```
