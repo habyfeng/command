@@ -49,3 +49,22 @@ git remote -v
 ```sh
 git pull codehub br_develop
 ```
+
+生成SSH密钥，打开 Git Bash：
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+系统不支持ed25519算法的话使用：
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+查看公钥：
+```
+cat ~/.ssh/id_ed25519.pub
+```
+或者
+```
+cat ~/.ssh/id_rsa.pub
+```
