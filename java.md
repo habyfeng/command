@@ -19,3 +19,19 @@ idea.properties添加如下配置：
 idea.cycle.buffer.size=disabled
 ```
 
+## 提取jar中的文件：
+例如提取gateway-starter-V3.1.1.RELEASE.jar中config目录下的application.yml
+```
+C:\app\jdk1.8.0_202\bin\jar xvf gateway-starter-V3.1.1.RELEASE.jar config\application.yml
+```
+
+说明：config\application.yml会被提取到当前目录
+
+## 更新jar包中的文件：
+例如更新gateway-starter-V3.1.1.RELEASE.jar中config目录下的application.yml:
+
+```sh
+jar -uvf gateway-starter-V3.1.1.RELEASE.jar config\application.yml
+```
+
+注意config\application.yml是jar里的路径，也是当前执行目录的相对路径
