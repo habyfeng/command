@@ -10,6 +10,11 @@ mysqldump  -n -t sakiladb -uroot -p"123456" -P 3306 --default-character-set=utf8
 create table film20240809 (select * from sakiladb.film)
 ```
 
+## mysql命令连接时指定编码：
+```sh
+ ./mysql -uroot -p123456 -D sakia --default-character-set=utf8 
+```
+
 ## 查询条件使用正则
 ```sql
 select * from kbv2_community where boundary REGEXP '.*(\\|)+.*' limit 10
