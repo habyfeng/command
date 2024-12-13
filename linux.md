@@ -1,6 +1,6 @@
 ## sed
 
-将yyyymmdd替换为YYYYMMDD：
+### 将yyyymmdd替换为YYYYMMDD：
 ```sh
 sed -i "s/yyyymmdd/YYYYMMDD/g" `grep -rl yyyymmdd  /home/albert/*.ddl`
 ```
@@ -9,6 +9,21 @@ sed -i "s/yyyymmdd/YYYYMMDD/g" `grep -rl yyyymmdd  /home/albert/*.ddl`
 - -l 输出包含yyyymmdd的文件名
 - -r 遍历子目录
 
+
+### 统计文件行数
+
+```sh
+sed -n '$=' /usr/aaa.DAT
+```
+
+
+## grep
+
+### 统计字符串出现次数
+
+```sh
+grep -o '字符串' file |wc -l
+```
 
 ## Ping IPV6地址：
 ```sh
