@@ -9,6 +9,15 @@ ping -S fe80::156c:1b0f:61ee:414 fe80::156c:1b0f:61ee:414
 certutil -hashfile yourfilename.ext MD5
 ```
 
+## 生成文件SHA1
+```bat
+certutil -hashfile C:\Users\Downloads\kotlin-compiler-embeddable-2.0.0.jar SHA1
+```
+> 备注: gradle jar包目录名
+
+
+
+
 ## 删除以lastUpdated结尾的文件
 ```bat
 for /r %i in (*.lastUpdated) do del %i
