@@ -13,6 +13,12 @@ mvn -e clean package -Dmaven.test.skip=true
 mvn dependency:copy-dependencies -DoutputDirectory=C:/lib
 ```	
 
+## 执行class
+```sh
+java -cp D:\work\toolkit\dev\toolkit\toolkit-io\target\toolkit-io-1.0.jar com.albert.toolkit.File.FileSysKit
+```
+
+
 ## idea不限制控制台行数
 idea.properties添加如下配置：
 ```
