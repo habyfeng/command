@@ -42,6 +42,11 @@ jar -uvf gateway-starter-V3.1.1.RELEASE.jar config\application.yml
 
 注意config\application.yml是jar里的路径，也是当前执行目录的相对路径
 
+
+## Java属性命名规范
+JavaBean允许大写字母起头的属性变量名，不过必须满足“变量的前两个字母要么全部大写，要么全部小写”的要求，如：IDCode、ICCard、idCode等属性变量名是合法的，而iC、iCcard、iDCode等属性变量名是非法的。
+
+
 ## keytool
 
 ### 生成jks密钥库

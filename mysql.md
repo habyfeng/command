@@ -96,14 +96,20 @@ MySQL ALTER TABLE table_name DROP field_name;
 
 ## 添加索引
 
+- 添加唯一索引
 ```sql
-alter table employee add unique emp_name2(cardnumber);
+alter table employee add unique index emp_name2(cardnumber);
 ```
 employee：表名；
 
 emp_name2：索引名称；
 
 cardnumber：字段名；
+
+- 添加普通索引
+```sql
+alter table employee add index emp_name2(cardnumber);
+```
 
 
 ## 删除索引
