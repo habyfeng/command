@@ -126,6 +126,11 @@ show profiles;
 show profile for query 1; 
 ```
 
+## 修改索引名称
+```sql
+ALTER TABLE t1 RENAME INDEX col1 TO c1;
+```
+
 ## general_log
 
 打开日志:
