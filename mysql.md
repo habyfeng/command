@@ -1,9 +1,21 @@
 ## mysqldump
+
+#### 不指定表名：
 ```sql
-mysqldump  -n -t sakiladb -uroot -p"123456" -P 3306 --default-character-set=utf8 --where="OccurredTime>'2016-12-01 00:00:00'">/root/spider/epgdb.sql
+mysqldump -n -t sakiladb -uroot -p"123456" -P 3306 --default-character-set=utf8 --where="OccurredTime>'2016-12-01 00:00:00'" > /root/data/sakiladb.sql
 ```
 
 - -t：只导数据
+#### 指定表名：
+```sql
+mysqldump -n -t sakiladb -uroot -p"123456" -P 3306 --tables table_name1 table_name2 --default-character-set=utf8 --where="OccurredTime>'2016-12-01 00:00:00'" > /root/data/sakiladb.sql
+```
+
+#### 导出表结构：
+```sql
+mysqldump -d sakiladb -uroot -p"123456" -P 3306 --default-character-set=utf8 > /root/data/sakiladb.sql
+```
+
 
 ## 从select中创建表：
 ```sql
