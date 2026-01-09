@@ -54,6 +54,8 @@ origin  git@github.com:habyfeng/toolkit.git (push)
 修改远程仓库地址，将远程仓库端口由22改为443会用到
 ```
 git remote set-url origin ssh://git@ssh.github.com:443/habyfeng/toolkit.git
+
+git remote set-url origin https://github.com/habyfeng/command.git
 ```
 	
 获取原始仓（主库仓）的branch分支最新代码到本地，合并两个版本的代码（fetch + merge 不建议使用）
@@ -78,6 +80,11 @@ cat ~/.ssh/id_ed25519.pub
 或者
 ```
 cat ~/.ssh/id_rsa.pub
+```
+
+## 查看配置
+```
+git config --list
 ```
 
 配置用户名密码：

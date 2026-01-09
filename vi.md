@@ -66,3 +66,13 @@ u
 ```
 Ctrl + r
 ```
+
+### 查看文件格式
+```
+:set fileformat?
+```
+
+### 设置文件格式为unix
+```
+:set fileformat=unix
+```

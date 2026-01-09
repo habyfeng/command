@@ -25,6 +25,12 @@ sed -n '$=' /usr/aaa.DAT
 grep -o '字符串' file |wc -l
 ```
 
+### 指定文件名模式
+```
+grep -r xxx --include=info*.log ./*
+```
+
+
 ## Ping IPV6地址：
 ```sh
 ping6 ::1
@@ -84,6 +90,61 @@ tcpdump -i eth0 tcp port 8089 -w /data/tompcap/2024-08-09_8089.pcap
 curl -X PUT "localhost:9200/customer/_doc/1?pretty" -H 'Content-Type: application/json' -d '{  "name": "John Doe"}'
 ```
 
+## route
+
+Linux系统的route命令用于显示和操作IP路由表（show / manipulate the IP routing table）。要实现两个不同的子网之间的通信，需要一台连接两个网络的路由器，或者同时位于两个网络的网关来实现。在Linux系统中，设置路由通常是为了解决以下问题：该Linux系统在一个局域网中，局域网中有一个网关，能够让机器访问Internet，那么就需要将这台机器的IP地址设置为Linux机器的默认路由。
+
+要注意的是，直接在命令行下执行route命令来添加路由，不会永久保存，当网卡重启或者机器重启之后，该路由就失效了；可以在/etc/rc.local中添加route命令来保证该路由设置永久有效。
+
+```sh
+route
+```
+```
+Kernel IP routing table
+Destination     Gateway          Genmask         Flags Metric Ref    Use Iface
+192.168.120.0   *                255.255.255.0   U     0      0        0 eth0
+e192.168.0.0    192.168.120.1    255.255.0.0     UG    0      0        0 eth0
+10.0.0.0        192.168.120.1    255.0.0.0       UG    0      0        0 eth0
+default         192.168.120.240  0.0.0.0         UG    0      0        0 eth0
+```
+
+```sh
+route -n
+```
+
+```
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+192.168.120.0   0.0.0.0         255.255.255.0   U     0      0        0 eth0
+192.168.0.0     192.168.120.1   255.255.0.0     UG    0      0        0 eth0
+10.0.0.0        192.168.120.1   255.0.0.0       UG    0      0        0 eth0
+0.0.0.0         192.168.120.240 0.0.0.0         UG    0      0        0 eth0
+```
+
+**说明：**
+第一行表示主机所在网络的地址为192.168.120.0，若数据传送目标是在本局域网内通信，则可直接通过eth0转发数据包;
+
+第四行表示数据传送目的是访问Internet，则由接口eth0，将数据包发送到网关192.168.120.240
+
+其中Flags为路由标志，标记当前网络节点的状态。
+
+Flags标志说明：
+
+- U Up表示此路由当前为启动状态
+
+- H Host，表示此网关为一主机
+
+- G Gateway，表示此网关为一路由器
+
+- R Reinstate Route，使用动态路由重新初始化的路由
+
+- D Dynamically,此路由是动态性地写入
+
+- M Modified，此路由是由路由守护程序或导向器动态修改
+
+- ! 表示此路由当前为关闭状态
+
+> 备注：route -n (-n 表示不解析名字，列出速度会比route 快)
 
 ## lsof
 列出一个进程打开的所有文件:
