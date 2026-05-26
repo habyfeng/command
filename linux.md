@@ -40,6 +40,21 @@ ping6 ::1
 ```sh
 ping6 -Ieth1 fe80::20c:29ff:fec4:ae9c
 ```
+
+### 删除特殊符号文件
+
+1. 用 ls -i 查看文件的 inode 号
+2. 使用 find 命令删除：
+```sh
+find . -inum 123456 -delete
+```
+
+如果是非空目录：
+```sh
+find . -inum 123456 -exec rm -r {} \;
+```
+   
+
 ## MTR
 
 MTR的名称来源是My TraceRoute。mtr是一个网络诊断工具，将ping和traceroute命令的功能合二为一。
