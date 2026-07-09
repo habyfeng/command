@@ -1,3 +1,52 @@
+## update-alternatives
+
+### 管理多个 Java 版本
+
+1. 注册 Java 版本，将各个 JDK 路径注册到候选列表中
+
+    ```sh
+    sudo update-alternatives --install /usr/bin/java java /usr/local/java/jdk-17/bin/java 300
+    sudo update-alternatives --install /usr/bin/java java /usr/local/java/jdk-8/bin/java 200
+    ```
+参数说明：
+- /usr/bin/java：系统命令链接路径。
+- java：链接组名称。
+- /usr/local/java/.../bin/java：你实际安装的 JDK 路径。
+-  300 / 200：优先级数字。数字越大，系统默认选择的优先级越高
+
+2. 切换默认 Java 版本
+   ```
+   sudo update-alternatives --config java
+    ```
+
+### 查看
+```sh
+update-alternatives --list
+```
+
+## lscpu查看硬件信息
+
+```sh
+lscpu
+```
+
+## env/printenv命令
+
+```
+# 查看所有环境变量
+env
+
+# 精确查询特定变量
+printenv JAVA_HOME
+```
+
+> 说明
+```
+/etc/profile     全局配置
+~/.bashrc        用户级配置 
+/etc/environment 系统级变量
+```
+
 ## sed
 
 ### 将yyyymmdd替换为YYYYMMDD：
@@ -53,7 +102,35 @@ find . -inum 123456 -delete
 ```sh
 find . -inum 123456 -exec rm -r {} \;
 ```
+
+### stat命令
+
+stat 是一个强大的 Linux/Unix 命令行工具，用于显示文件或文件系统的底层状态信息（读取 inode 元数据）。
+
+基本语法为 stat [文件路径]。以下是常见字段及含义：
+
+- File：文件名。
+- Size：文件大小（字节）。
+- Blocks：占用磁盘块的数量。
+- Device：设备编号。
+- Inode：索引节点编号。
+- Links：硬链接数量。
+- Access / Modify / Change：文件的三个核心时间属性。
+
+常用选项:
+```
+stat -f 文件名：显示文件所在文件系统的状态。
+stat -t 文件名：以简洁格式（单行）输出信息，适合脚本解析。
+```
+
+### findmnt命令
+findmnt 是 Linux 系统中用于查找、列出和检查已挂载文件系统的强大工具。
+
+1. 基础用法
    
+- 列出所有挂载：直接运行 findmnt 将以树状图格式列出当前系统中所有已挂载的文件系统。
+- 指定具体文件：findmnt --target 文件路径
+
 
 ## MTR
 

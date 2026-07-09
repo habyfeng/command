@@ -1,3 +1,8 @@
+## 查看字段注释
+```sql
+show full columns from 表名
+```
+
 ## mysqldump
 
 #### 不指定表名：
