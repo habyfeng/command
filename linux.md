@@ -1,3 +1,9 @@
+## telnet 替代
+```bash
+nc -vz <IP> <端口>
+```
+
+
 ## update-alternatives
 
 ### 管理多个 Java 版本
@@ -5,23 +11,35 @@
 1. 注册 Java 版本，将各个 JDK 路径注册到候选列表中
 
     ```sh
-    sudo update-alternatives --install /usr/bin/java java /usr/local/java/jdk-17/bin/java 300
-    sudo update-alternatives --install /usr/bin/java java /usr/local/java/jdk-8/bin/java 200
+    sudo update-alternatives --install /usr/bin/java java /usr/local/java/jdk-17/bin/java 17
+    sudo update-alternatives --install /usr/bin/java java /usr/local/java/jdk-8/bin/java 8
     ```
 参数说明：
 - /usr/bin/java：系统命令链接路径。
 - java：链接组名称。
 - /usr/local/java/.../bin/java：你实际安装的 JDK 路径。
--  300 / 200：优先级数字。数字越大，系统默认选择的优先级越高
+-  17 / 8：优先级数字。数字越大，系统默认选择的优先级越高
 
 2. 切换默认 Java 版本
    ```
    sudo update-alternatives --config java
     ```
+3. 删除
+   ```
+   update-alternatives --remove name path
+
+   如：
+   update-alternatives --remove java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+   ```
+   remove选项的功能是删除一个命令的link值，其附带的slave也将一起删除。
+
+   其中name与path与install中的一致，如果所删除的链接组中还有其他链接的话，系统将会自动从其他中选择一个priority高的链接作为默认为链接。    
 
 ### 查看
 ```sh
-update-alternatives --list
+update-alternatives --list java
+
+update-alternatives --display java
 ```
 
 ## lscpu查看硬件信息
