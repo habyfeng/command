@@ -97,3 +97,19 @@ git config --global user.email "your.email@example.com"
 ```
 ssh -T git@github.com
 ```
+
+## fork后添加分支
+```sh
+git remote add upstream https://github.com/apache/tomcat.git
+
+git fetch upstream
+
+git checkout -b 9.0.x upstream/9.0.x
+
+git push origin 9.0.x
+```
+
+**删除upstream**
+```sh
+git remote remove upstream
+```

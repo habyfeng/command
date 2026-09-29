@@ -60,6 +60,21 @@ displays information about the supported hardware：
 netsh wlan show wirelesscapabilities
 ```
 
+### 查看WiFi详细配置
+输入以下命令查看所有保存过的 WiFi 配置文件名称：
+```
+netsh wlan show profiles
+```
+
+找到你想要查看的 WiFi 名称，输入以下命令（将 WiFi名称 替换为实际名称，注意保留双引号）：
+```
+netsh wlan show profile name="WiFi名称" key=clear
+```
+
+- 可以在 “安全设置” -> “密钥内容” 看到该 WiFi 的明文密码。
+- 可以在 “常规设置” 中看到 SSID、网络类型。
+- 可以在 “无线电类型” 中查看支持的协议（如 802.11n 或 802.11ac）。
+
 ## 查看系统启动的算法套：
 
 PowerShell下执行：

@@ -3,6 +3,17 @@
 ## 打war包
 ```sh
 jar cf0M app-0.0.1-SNAPSHOT.war META-INF org WEB-INF
+
+# 当前目录
+jar -cvf 目标包名.war
+
+# 当前目录并避免压缩内部文件
+jar -cvfM0 目标包名.war
+```
+
+## 解压war包：
+```
+jar -xvf /path/to/your/myapp.war
 ```
 
 ## maven打包

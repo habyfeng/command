@@ -1,0 +1,4 @@
+### 查看建表语句
+```sql
+SELECT DBMS_METADATA.GET_DDL('TABLE', 'TABLE_NAME') FROM DUAL;
+```
